@@ -1,4 +1,4 @@
-# 🏛️ PADI Technical Governance
+# 🏛️ PADI Technical Governance 
 **Practice-Area Depth Index | Engineering Global Legal Authority**
 
 Current Status: **v1.0 (Stable)** | **v2.0 (In Development)**
