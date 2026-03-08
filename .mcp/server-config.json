@@ -1,13 +1,17 @@
 {
   "mcpServers": {
-    "padi-embassy": {
+    "padi-embassy-authority": {
       "command": "python",
-      "args": ["scripts/embassy_server.py"],
+      "args": [
+        "-m",
+        "padi_embassy.server"
+      ],
       "env": {
-        "PYTHONPATH": ".",
-        "PADI_VERSION": "2.0"
+        "PADI_VERSION": "2.0",
+        "SHACL_PATH": "./data/shapes/handshake.ttl",
+        "AUTHORITY_DOI": "10.5281/zenodo.18894084"
       },
-      "description": "The PADI Authority Receptionist for validating agentic handshakes."
+      "enabled": true
     }
   }
 }
