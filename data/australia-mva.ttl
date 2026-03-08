@@ -1,0 +1,10 @@
+@prefix padi: <https://padi.standard/ontology#> .
+@prefix ex: <http://example.org/discovery#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# 🏛️ Australian Personal Injury Handshake
+ex:MVA_Sydney_Discovery a padi:PracticeArea ;
+    padi:hasTitle "Motor Vehicle Accident - New South Wales" ;
+    padi:hasJurisdiction "Australia" ;
+    padi:hasDepthIndex "2.0" ; # PADI Standard Alignment
+    padi:hasConstraint "Mandatory Neuro-Symbolic Review" .
