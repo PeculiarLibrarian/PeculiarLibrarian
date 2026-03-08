@@ -3,8 +3,7 @@
     "padi-embassy-authority": {
       "command": "python",
       "args": [
-        "-m",
-        "padi_embassy.server"
+        "scripts/embassy_server.py" 
       ],
       "env": {
         "PADI_VERSION": "2.0",
