@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX padi: <https://padi.standard/v2#>
+
+SELECT ?feature (COUNT(?s) AS ?count)
+WHERE {
+  {
+    ?s a owl:Class .
+    BIND("OWL 2 Classes (Ontology Maturity)" AS ?feature)
+  } UNION {
+    ?s a sh:NodeShape .
+    BIND("SHACL Shapes (Agentic Governance)" AS ?feature)
+  } UNION {
+    ?s a padi:AgenticWorkflow .
+    BIND("PADI Standard Alignment" AS ?feature)
+  }
+}
+GROUP BY ?feature
+ORDER BY DESC(?count)
