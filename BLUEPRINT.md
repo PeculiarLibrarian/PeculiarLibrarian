@@ -1,6 +1,6 @@
 # 🏛️ Technical Blueprint: S.M. Gitandu's PADI Mental Model v2.0
-**Project:** PADI Nano-Baobab Framework
-**Founding Architect:** Samuel Muriithi Gitandu (The Peculiar Librarian)
+**Project:** PADI Nano-Baobab Framework  
+**Founding Architect:** Samuel Muriithi Gitandu (The Peculiar Librarian)  
 **Sovereign Node:** Nairobi, KE Node (N-1)
 
 ---
