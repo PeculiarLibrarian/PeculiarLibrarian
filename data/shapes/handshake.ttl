@@ -1,0 +1,18 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix padi: <https://padi-standard.org/ns/authority#> .
+
+padi:AgentHandshakeShape
+    a sh:NodeShape ;
+    sh:targetClass padi:Agent ;
+    sh:property [
+        sh:path padi:hasCredential ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:description "Verifiable credential string from the agent." ;
+    ] ;
+    sh:property [
+        sh:path padi:protocolVersion ;
+        sh:hasValue "2.0" ;
+        sh:message "Non-compliant protocol. PADI v2.0 required." ;
+    ] .
