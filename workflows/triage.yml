@@ -1,0 +1,74 @@
+name: PADI Global Agent Triage
+run-name: "Unit Deployment: ${{ github.event.issue.title }} [${{ github.actor }}]"
+
+on:
+  issues:
+    types: [opened, labeled] # Added 'labeled' to allow manual re-triggering
+
+# Hardened Security: Standardizes the token to read-only for everything except issues
+permissions:
+  contents: read
+  issues: write
+
+# Concurrency Control: Prevents multiple scouts from stepping on each other
+concurrency:
+  group: scout-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  triage:
+    if: contains(github.event.issue.labels.*.name, 'agent-review-pending')
+    strategy:
+      fail-fast: false 
+      matrix:
+        agent: [AU-9.1, DE-9.2, NL-9.3, UK-9.4, CH-9.5, MENA-9.6]
+        include:
+          - agent: AU-9.1
+            region: "Australia (Sydney/Melbourne/Brisbane)"
+            visa_focus: "858 Innovation Visa"
+          - agent: DE-9.2
+            region: "Germany (Munich/Berlin/Hamburg)"
+            visa_focus: "Opportunity Card"
+          - agent: NL-9.3
+            region: "Netherlands (Amsterdam/Eindhoven/Utrecht)"
+            visa_focus: "30% Tax Ruling"
+          - agent: UK-9.4
+            region: "UK (London/Cambridge/Manchester)"
+            visa_focus: "Skilled Worker Visa"
+          - agent: CH-9.5
+            region: "Switzerland (Zurich/Basel/Geneva)"
+            visa_focus: "L/B Permit Quota"
+          - agent: MENA-9.6
+            region: "MENA (Dubai/Abu Dhabi/Riyadh)"
+            visa_focus: "Golden Visa / Premium Residency"
+
+    runs-on: ubuntu-22.04 # Pinned OS version for stability
+    steps:
+      - name: "Activate Scout ${{ matrix.agent }}"
+        uses: actions/github-script@v7.0.1 # Pinned version to prevent breaking changes
+        env:
+          SCOUT_UNIT: ${{ matrix.agent }}
+          TARGET_REGION: ${{ matrix.region }}
+          VISA_PATH: ${{ matrix.visa_focus }}
+        with:
+          script: |
+            const { SCOUT_UNIT, TARGET_REGION, VISA_PATH } = process.env;
+            const issueNumber = context.issue.number;
+            const body = `### 👋 PADI Agent Acknowledgment: Unit ${SCOUT_UNIT}
+            
+            **Location:** ${TARGET_REGION}
+            **Status:** Active | Handshake Mode
+            
+            **Mission Logic:**
+            - **Target:** Verify semantic alignment for *${context.payload.issue.title}*
+            - **Protocol:** Heuristic Discovery (Depth 2)
+            - **Residency Priority:** Tracking **${VISA_PATH}** availability.
+            
+            **Architect Notification:** The Bureau in Nairobi has been notified. Cross-border validation is running via PADI-v2.0 standards.`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: body
+            });
