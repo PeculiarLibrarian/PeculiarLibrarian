@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you utilize the PADI Technical Standard or the Ranganathan-compliant agentic architecture, please cite it as follows."
+message: "If you utilize the PADI Technical Standard, the Sovereign Whitepaper, or the Ranganathan-compliant architecture, please cite as follows."
 authors:
   - family-names: "Gitandu"
     given-names: "Samuel Muriithi"
@@ -19,6 +19,7 @@ keywords:
   - "Information Science"
   - "Ranganathan's Five Laws"
   - "Knowledge Graphs"
+  - "National Information Sovereignty"
   - "Ontology Engineering"
   - "Agentic Triage"
   - "Alpha-9 Global Fleet"
@@ -26,4 +27,14 @@ abstract: |
   The PADI (Pattern-Architecture-Data-Inference) Technical Standard v3.0 
   integrates Ranganathan's Five Laws of Library Science into a global 
   agentic ecosystem. This version formalizes the Alpha-9 Scout Fleet 
-  for high-logic, low-compute environments.
+  and the Sovereign Whitepaper for deterministic grounding.
+references:
+  - type: report
+    authors:
+      - family-names: "Gitandu"
+        given-names: "Samuel Muriithi"
+    title: "National Information Sovereignty via the PADI Standard (v3.0)"
+    year: 2026
+    doi: "10.5281/zenodo.18894084"
+    url: "https://github.com/PeculiarLibrarian/PeculiarLibrarian/blob/main/WHITE-PAPER.md"
+    notes: "Official Sovereign Whitepaper for PADI v3.0 Government Implementation."
