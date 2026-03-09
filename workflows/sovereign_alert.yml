@@ -1,1 +1,41 @@
+name: Sovereign Visitor Handshake
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
 
+jobs:
+  padi_liaison_response:
+    runs-on: ubuntu-latest
+    # Triggers for .gov, .edu, .org, and specific international domains
+    if: >
+      contains(github.event.sender.login, 'gov') || 
+      contains(github.event.sender.login, 'edu') || 
+      contains(github.event.sender.login, 'org') ||
+      contains(github.event.comment.body, '858') ||
+      contains(github.event.comment.body, 'Visa')
+    steps:
+      - name: Execute Liaison Protocol
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const whitepaperUrl = "https://github.com/PeculiarLibrarian/PeculiarLibrarian/blob/main/WHITE-PAPER.md";
+            const doiUrl = "https://doi.org/10.5281/zenodo.18894084";
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### 🏛️ PADI Bureau: Sovereign Handshake Initiated
+
+Welcome to the **Nairobi (N-1) Root**. Your credentials suggest a high-authority inquiry regarding the **PADI Technical Standard v3.0**.
+
+The Founding Architect, **S. M. Gitandu**, has been alerted to this interaction via the **Sentinel** protocol. As a priority visitor, please be advised of the following sovereign resources:
+
+1. **Sovereign Whitepaper**: Our [National Information Sovereignty Briefing](${whitepaperUrl}) details the defense against stochastic drift and model colonization.
+2. **Version of Record**: The official citable standard is registered under [DOI: 10.5281/zenodo.18894084](${doiUrl}).
+3. **Validation Node**: Technical integrity can be verified live at our [Hugging Face Sentinel](https://huggingface.co/spaces/PeculiarLibrarian/PADI-Validator-v2).
+
+*This is an automated response from the PADI Liaison Agent. For direct diplomatic engagement, please refer to the contact protocols in the Master Registry.*`
+            })
