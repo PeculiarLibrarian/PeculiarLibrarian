@@ -1,22 +1,29 @@
 cff-version: 1.2.0
-message: "If you use this standard in legal or semantic research, please cite it as follows."
+message: "If you utilize the PADI Technical Standard or the Ranganathan-compliant agentic architecture, please cite it as follows."
 authors:
   - family-names: "Gitandu"
-    given-names: "S. M."
+    given-names: "Samuel Muriithi"
     alias: "The Peculiar Librarian"
-    affiliation: "PADI Authority Bureau"
+    affiliation: "PADI Technical Bureau"
     city: "Nairobi"
     country: "KE"
-title: "PADI: Practice-Area Depth Index Technical Standard v2.0"
-version: 2.0.0
-doi: 10.5281/zenodo.18894084
-date-released: 2026-03-06
+title: "PADI Technical Standard v3.0: A Neuro-Symbolic Framework for Agentic Orchestration"
+version: "3.0.0"
+doi: "10.5281/zenodo.18894084"
+date-released: "2026-03-09"
 url: "https://github.com/PeculiarLibrarian/PeculiarLibrarian"
 repository-code: "https://github.com/PeculiarLibrarian/PeculiarLibrarian"
-license: GPL-3.0
+license: "GPL-3.0"
 keywords:
   - "Librarianship"
   - "Information Science"
+  - "Ranganathan's Five Laws"
   - "Knowledge Graphs"
   - "Ontology Engineering"
-  - "Model Grounding"
+  - "Agentic Triage"
+  - "Alpha-9 Global Fleet"
+abstract: |
+  The PADI (Pattern-Architecture-Data-Inference) Technical Standard v3.0 
+  integrates Ranganathan's Five Laws of Library Science into a global 
+  agentic ecosystem. This version formalizes the Alpha-9 Scout Fleet 
+  for high-logic, low-compute environments.
