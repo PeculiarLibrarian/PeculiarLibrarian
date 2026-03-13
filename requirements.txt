@@ -1,5 +1,5 @@
+streamlit
+requests
 fastmcp>=0.1.0
 pyshacl>=0.25.0
 rdflib>=7.0.0
-streamlit
-requests
